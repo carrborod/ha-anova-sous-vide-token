@@ -1,0 +1,36 @@
+start_cook:
+  fields:
+    device_id:
+      required: false
+      selector:
+        device:
+          integration: anova_token
+    temperature:
+      required: true
+      example: 135
+      selector:
+        number:
+          min: 32
+          max: 203
+          step: 0.5
+    unit:
+      required: false
+      default: "F"
+      selector:
+        select:
+          options: ["F", "C"]
+    minutes:
+      required: true
+      example: 90
+      selector:
+        number:
+          min: 1
+          max: 6000
+          unit_of_measurement: min
+stop_cook:
+  fields:
+    device_id:
+      required: false
+      selector:
+        device:
+          integration: anova_token

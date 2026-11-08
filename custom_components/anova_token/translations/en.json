@@ -1,0 +1,47 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Anova personal access token",
+        "description": "Create a token in the Anova Oven app: More > Developer > Personal Access Tokens. It starts with anova-.",
+        "data": { "token": "Personal access token" }
+      }
+    },
+    "error": {
+      "bad_format": "Tokens start with anova-.",
+      "invalid_auth": "Anova rejected this token.",
+      "no_cookers": "Connected, but Anova listed no Precision Cooker on this account (or rejected the token). Make sure the cooker is plugged in and online.",
+      "unknown": "Unexpected error; check the Home Assistant log."
+    },
+    "abort": { "already_configured": "This cooker is already set up." }
+  },
+  "entity": {
+    "binary_sensor": { "api_connected": { "name": "API connected" } },
+    "button": {
+      "start_cook": { "name": "Start cook" },
+      "stop_cook": { "name": "Stop cook" }
+    },
+    "number": {
+      "cook_temperature": { "name": "Cook temperature" },
+      "cook_timer": { "name": "Cook timer" }
+    },
+    "sensor": { "api_state": { "name": "API state" } }
+  },
+  "services": {
+    "start_cook": {
+      "name": "Start cook",
+      "description": "Start a sous vide cook on an Anova Precision Cooker.",
+      "fields": {
+        "device_id": { "name": "Cooker", "description": "Leave empty to use your only cooker." },
+        "temperature": { "name": "Temperature", "description": "Target water temperature." },
+        "unit": { "name": "Unit", "description": "F or C." },
+        "minutes": { "name": "Minutes", "description": "Cook time in minutes." }
+      }
+    },
+    "stop_cook": {
+      "name": "Stop cook",
+      "description": "Stop the current cook.",
+      "fields": { "device_id": { "name": "Cooker", "description": "Leave empty to use your only cooker." } }
+    }
+  }
+}

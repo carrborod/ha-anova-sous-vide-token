@@ -1,0 +1,11 @@
+{
+  "domain": "anova_token",
+  "name": "Anova Sous Vide (Token)",
+  "codeowners": [],
+  "config_flow": true,
+  "documentation": "https://developer.anovaculinary.com/docs/devices/wifi/sous-vide-commands",
+  "integration_type": "hub",
+  "iot_class": "cloud_push",
+  "requirements": [],
+  "version": "0.1.0"
+}
