@@ -17,7 +17,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .entity import AnovaTokenEntity
 
-_STATE_KEYS = ("state", "status", "mode", "jobStatus")
+_STATE_KEYS = ("mode", "state", "status")
 
 
 async def async_setup_entry(
@@ -53,7 +53,7 @@ class RawState(AnovaTokenEntity, SensorEntity):
         flat = _flatten(self._payload)
         for key in _STATE_KEYS:
             for flat_key, value in flat.items():
-                if flat_key.split(".")[-1] == key and isinstance(value, (str, int, float)):
+                if flat_key.split(".")[-1] == key and isinstance(value, (str, int, float)) and value != "":
                     return str(value)[:255]
         return "received" if self._payload else None
 
